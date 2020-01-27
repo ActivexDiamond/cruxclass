@@ -1,13 +1,12 @@
 local middleclass = {
   _VERSION = [[
-  	- Middleclass  v4.1.1 
+  	- middleclass  v4.1.1 
   	- MixinEdit    v1.0.0 
   	- NamingRevamp v1.0.0
   ]],
   
   _DESCRIPTION = [[
 	  - Middleclass:  Object Orientation for Lua.
-	  - CruxClass:	  A nickname for Middleclass augmented with both MixingEdit and NamingRevamp at once.
 	  - MixinEdit:    Updates isInstanceOf and isSubclassOf to handle mixins.
 	  - NamingRevamp: Revamps middleclass's naming conventions to be more uniform.
   ]],
@@ -53,7 +52,7 @@ local middleclass = {
   _NAMING_REVAMP_CHANGES = [[	
 	  Naming Conventions Changes:
 	  	+ New Conventions:
-	  		identifier = keywords, fundemental methods.
+	  		identifier = keywords, fundamental methods.
 	  		__identifier = lua metamethods, middleclass metamethods.
 			__identifier__ = middleclass internal methods/data.  		
 	  	
@@ -154,7 +153,8 @@ local function _createClass(__name__, super)
 
   local aClass = { __name__ = __name__, super = super, static = {},
                    __instanceDict__ = dict, __declaredMethods__ = {},
-                   __subclasses__ = setmetatable({}, {__mode='k'})  }
+                   __subclasses__ = setmetatable({}, {__mode='k'}),
+                   __mixins__ = {}  }
 
   if super then
     setmetatable(aClass.static, {
